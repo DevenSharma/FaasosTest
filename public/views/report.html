@@ -1,0 +1,24 @@
+<h3>Reports</h3>
+<div class="row">
+<table  class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product Name</th>     
+      <th scope="col">Utilized</th>     
+      <th scope="col">Predicted Quantity</th>     
+      <th scope="col">Predicted Date</th>     
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in report">
+      <th scope="row">{{$index+1}}</th>
+      <td>{{item.raw.name}}</td>
+      <td>{{item.createdtillnow}}</td>
+      <td>{{item.predicted}}</td>
+      <td>{{item.created_date }}</td>
+     
+    </tr>   
+  </tbody>
+</table>
+</div>

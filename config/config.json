@@ -1,0 +1,10 @@
+{
+  "db" : {
+    "username": "fasos",
+    "password": "fasos123",
+    "host": "ds245680.mlab.com",
+    "port": "45680",
+    "name": "fasos"
+  }
+}
+

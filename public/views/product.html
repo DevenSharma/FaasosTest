@@ -1,0 +1,63 @@
+<h3>Products</h3>
+<div class="">
+    <span>
+        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
+          Add Product
+        </button>
+     </span>  
+<br/>
+<br/>
+</div>
+<div class="row">
+<table  class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product Name</th>     
+      <th scope="col">Created Date</th>     
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="product in products">
+      <th scope="row">{{$index+1}}</th>
+      <td>{{product.name}}</td>
+      <td>{{product.created_date}}</td>
+     
+    </tr>   
+  </tbody>
+</table>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="productForm" novalidate>
+        <div class="form-group">
+        <label for="exampleInputEmail1">Product Name</label>
+        <input type="text" name="productName" ng-model="productName" class="form-control" aria-describedby="emailHelp" placeholder="Please enter product name" required="required">
+        <!--    <small ng-if="productForm.productName.$valid " class="form-text text-muted">Product Name requried</small>-->
+            <span ng-show="productForm.productName.$dirty && productForm.productName.$invalid && productForm.productName.$pristine  ">Username is required.</span>
+        </div>
+  
+  
+  <button ng-click="addProduct()" type="button" ng-disabled="productForm.productName.$dirty && productForm.productName.$invalid ||
+  " class="btn btn-primary">save</button>
+</form>
+          
+          
+      </div>
+<!--
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+-->
+    </div>
+  </div>
+</div>

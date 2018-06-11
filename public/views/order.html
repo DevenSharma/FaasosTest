@@ -1,0 +1,110 @@
+<h3>Orders</h3>
+<div class="row">
+    <span>
+      <button type="button" class="btn btn-primary pull-left " data-toggle="modal" data-target="#placeOrder">Place Order</button>
+    </span>
+'
+    <span>
+       <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#predictionModel">Add Predictions</button>
+    </span>
+</div>    
+<br/>
+<div class="row">
+<table  class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Order Id</th>     
+      <th scope="col">Created Date</th>     
+      <th scope="col">Status</th>     
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="order in orders">
+      <th scope="row">{{$index+1}}</th>
+      <td>{{order._id}}</td>
+      <td>{{order.created_date}}</td>
+        <td><span class="bg-success" ng-if="order.status">Done</span>
+        
+        <span class="bg-warning" ng-if="!order.status">Pending</span>
+        </td>
+     
+    </tr>   
+  </tbody>
+</table>
+</div>
+    
+<div class="modal fade" id="placeOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Place Order</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="productForm">
+            <div class="form-group">
+            <label for="sel1">Select Product:</label>
+              <select class="form-control" ng-model="productId">
+                  <option value="" selected disabled>Please select Product</option>
+                  <option ng-repeat="prod in products" value="{{prod._id}}">{{prod.name}}</option>
+               
+              </select>
+            </div>
+        <div class="form-group">
+        <label for="exampleInputEmail1">Product Quantity</label>
+            
+        <input type="number" name="productQuantity" ng-model="productQuantity" class="form-control" aria-describedby="emailHelp" placeholder="Quantity">
+        <!--    <small ng-if="productForm.productName.$valid " class="form-text text-muted">Product Name requried</small>-->
+        </div>
+  
+  
+  <button ng-click="placeOrder()" type="button"   class="btn btn-primary">save</button>
+</form>
+          
+          
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="predictionModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter Prediction for Products</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="predictionForm">
+            <div class="form-group">
+            <label for="sel1">Select Product:</label>
+              <select class="form-control" ng-model="predictProduct">
+                  <option value="" selected disabled>Please select Product</option>
+                  <option ng-repeat="prod in products" value="{{prod._id}}">{{prod.name}}</option>
+               
+              </select>
+            </div>
+        <div class="form-group">
+        <label for="exampleInputEmail1">Predected Quantity</label>
+            
+        <input type="number" name="predictQuantity" ng-model="predictQuantity" class="form-control" aria-describedby="emailHelp" placeholder="Predected Quantity">
+        <!--    <small ng-if="productForm.productName.$valid " class="form-text text-muted">Product Name requried</small>-->
+        </div>
+  
+  
+  <button ng-click="createPrediction()" type="button"   class="btn btn-primary">save</button>
+</form>
+          
+          
+      </div>
+
+    </div>
+  </div>
+</div>

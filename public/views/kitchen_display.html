@@ -1,0 +1,29 @@
+<h3>Kitchen Display</h3>
+<div class="row">
+<table  class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product Name</th>     
+      <th scope="col">Quantity</th>     
+      <th scope="col">Predicted Quantity</th>     
+      <th scope="col">total created</th>     
+      <th scope="col">Status</th>     
+       
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="product in display">
+      <th scope="row">{{$index+1}}</th>
+      <td>{{product.raw.name}}</td>
+      <td>{{product.quantity}}</td>
+      <td>{{product.predict_data.predicted}}</td>
+      <td>{{product.predict_data.createdtillnow}}</td>
+        <td ><button class="btn btn-primary" ng-click="done(product._id)">Done</button>
+        
+        </td>
+     
+    </tr>   
+  </tbody>
+</table>
+</div>
